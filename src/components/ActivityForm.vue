@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <form>
+    <form @submit.prevent="getFilteredActivity">
       <label for="types">Choose a type:</label>
       <select v-model="selectedType" id="types">
             <option v-for="type in activityTypes" :value="type">{{type}}</option>
@@ -41,10 +41,31 @@ export default {
       selectedType: "",
       participants: null,
       price: "",
-      accessibility: ""
+      accessibility: "",
+      randomActivity: {}
+    }
+  },
+    methods: {
+      getFilteredActivity(){
+        let url = 'http://www.boredapi.com/api/activity'
+          url += `?type=${this.selectedType}`;
+          url += `&participants=${this.participants}`;
+          if (this.price === 'cheap') {
+            url += `&minprice=0&maxprice=0.5`;
+          } else {
+            url += `&minprice=0.5&maxprice=1`;
+          };
+          if (this.accessibility === 'easy') {
+            url += `&minaccessibility=0&maxaccessibility=0.5`;
+          } else {
+            url += `&minaccessibility=0.5&maxaccessibility=1`;
+          };
+          fetch(url)
+          .then(response => response.json())
+          .then(data => this.randomActivity = data);
+      }
     }
   }
-}
 </script>
 
 <style lang="css" scoped>
