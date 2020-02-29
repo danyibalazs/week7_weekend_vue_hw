@@ -1,16 +1,19 @@
 <template>
   <div id="app">
+    <activity-form></activity-form>
     <!-- <joke-component :joke='joke'></joke-component> -->
   </div>
 </template>
 
 <script>
 import JokeComponent from './components/JokeComponent.vue'
+import ActivityForm from './components/ActivityForm.vue'
 
 export default {
   name: 'App',
   components: {
-    'joke-component': JokeComponent
+    'joke-component': JokeComponent,
+    'activity-form': ActivityForm
   },
   data(){
     return {
@@ -22,7 +25,6 @@ export default {
     .then(response => response.json())
     .then(jokeData => {
       this.joke = jokeData[0];
-
     })
   }
 }
