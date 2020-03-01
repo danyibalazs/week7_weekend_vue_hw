@@ -1,33 +1,34 @@
 <template lang="html">
   <div>
+    <input @click="getRandomActivity" type="button" value="Random Activity">
     <form @submit.prevent="getFilteredActivity">
       <label for="types">Choose a type:</label>
-      <select v-model="selectedType" id="types">
+      <select required v-model="selectedType" id="types">
             <option v-for="type in activityTypes" :value="type">{{type.toUpperCase()}}</option>
       </select>
 
       <label for="participants">Participants</label>
-      <input type="number" v-model.number="participants">
+      <input required type="number" v-model.number="participants">
       <br>
 
       <label>Price</label>
       <br>
-      <input type="radio" value="cheap" v-model="price">
+      <input required type="radio" name="price" value="cheap" v-model="price">
       <label>Cheap</label>
-      <input type="radio" value="expensive" v-model="price">
+      <input type="radio" name="price" value="expensive" v-model="price">
       <label>Expensive</label>
       <br>
 
       <label>Accessibility</label>
       <br>
-      <input type="radio" value="easy" v-model="accessibility">
+      <input required type="radio" name="accessibility" value="easy" v-model="accessibility">
       <label>Easy</label>
-      <input type="radio" value="hard" v-model="accessibility">
+      <input type="radio" name="accessibility" value="hard" v-model="accessibility">
       <label>Hard</label>
       <br>
 
       <input type="submit" value="Get Activity">
-      
+
     </form>
   </div>
 </template>
@@ -48,6 +49,13 @@ export default {
     }
   },
     methods: {
+      getRandomActivity(){
+        fetch('http://www.boredapi.com/api/activity')
+          .then(response => response.json())
+          .then(data => {this.randomActivity = data;
+            eventBus.$emit("randomActivity", this.randomActivity);
+          });
+      },
       getFilteredActivity(){
         let url = 'http://www.boredapi.com/api/activity'
           url += `?type=${this.selectedType}`;

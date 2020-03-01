@@ -41,14 +41,14 @@ export default {
     transformActivity(activity){
       if(!activity.error){
         if (activity.price <= 0.5) {
-          activity.price = 'cheap'.toUpperCase()
+          activity.price = 'CHEAP'
         } else {
-          activity.price = 'expensive'.toUpperCase()
+          activity.price = 'EXPENSIVE'
         };
         if (activity.accessibility <= 0.5) {
-          activity.accessibility = 'easy'.toUpperCase()
+          activity.accessibility = 'EASY'
         } else {
-          activity.accessibility = 'hard'.toUpperCase()
+          activity.accessibility = 'HARDER'
         };
         activity.type = activity.type.toUpperCase()
       }
