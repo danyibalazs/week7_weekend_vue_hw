@@ -3,7 +3,7 @@
   <div>
 
     <div v-if="activity.activity">
-      <b-card>
+      <b-card img-src="https://fitactivechildren.co.uk/wp-content/uploads/2019/06/activity-icon.png">
         <h2>{{activity.activity}}</h2>
         <p>Type: {{activity.type}}</p>
         <p>Participants: {{activity.participants}}</p>
@@ -19,7 +19,7 @@
     </div>
 
   </div>
-  
+
 </template>
 
 <script>
@@ -30,4 +30,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 </style>

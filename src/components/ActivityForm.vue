@@ -1,10 +1,10 @@
 <template lang="html">
   <div>
 
-    <h4 class="mb-3">Get a random activity:</h4>
+    <h4 class="mb-3">Get a random activity</h4>
     <b-button class="mb-3" @click="getRandomActivity">Random Activity</b-button>
 
-    <h4 class="mb-3">Or get a specified one:</h4>
+    <h4 class="mb-3">Or get a specified one</h4>
     <b-form @submit.prevent="getFilteredActivity">
 
       <b-form-group label="Type">
@@ -31,7 +31,7 @@
         </b-form-radio-group>
       </b-form-group>
 
-      <b-button type="submit">Get activity</b-button>
+      <b-button type="submit">Filtered activity</b-button>
 
     </b-form>
   </div>
