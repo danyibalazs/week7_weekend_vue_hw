@@ -1,15 +1,17 @@
 <template lang="html">
   <div>
+
     <h4 class="mb-3">Get a random activity:</h4>
     <b-button class="mb-3" @click="getRandomActivity">Random Activity</b-button>
 
     <h4 class="mb-3">Or get a specified one:</h4>
     <b-form @submit.prevent="getFilteredActivity">
 
-      <div class="mt-3">Type</div>
-      <b-form-select size="sm" class="mb-3" required v-model="selectedType" id="types">
+      <b-form-group label="Type">
+        <b-form-select size="sm" required v-model="selectedType" id="types">
             <option v-for="type in activityTypes" :value="type">{{type.toUpperCase()}}</option>
-      </b-form-select>
+          </b-form-select>
+      </b-form-group>
 
       <b-form-group label="Participans">
         <b-form-input  required placeholder="Number of participants" type="number" v-model.number="participants"></b-form-input>

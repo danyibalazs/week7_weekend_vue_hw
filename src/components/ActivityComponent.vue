@@ -1,5 +1,7 @@
 <template lang="html">
-  <div class="">
+
+  <div>
+
     <div v-if="activity.activity">
       <b-card>
         <h2>{{activity.activity}}</h2>
@@ -11,9 +13,13 @@
     </div>
 
     <div v-if="activity.error">
-      <h2>{{activity.error}}</h2>
+      <b-card>
+        <h2>{{activity.error}}</h2>
+      </b-card>
     </div>
+
   </div>
+  
 </template>
 
 <script>

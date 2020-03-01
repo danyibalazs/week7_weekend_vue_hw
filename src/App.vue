@@ -1,5 +1,7 @@
 <template>
+
   <div id="app">
+
     <div>
       <b-jumbotron header="A Boring Joke App" lead="If you are bored here are some random activities...">
       <p>...and some jokes</p>
@@ -13,7 +15,9 @@
         <b-col><joke-component :joke='joke'></joke-component></b-col>
       </b-row>
     </b-container>
+    
   </div>
+
 </template>
 
 <script>
@@ -68,12 +72,5 @@ export default {
 </script>
 
 <style>
-#app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px; */
-}
+
 </style>
