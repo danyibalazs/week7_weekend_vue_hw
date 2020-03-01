@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import {eventBus} from "../main.js"
+
 export default {
   name: 'activity-form',
   data(){
@@ -53,19 +55,22 @@ export default {
           if (this.price === 'cheap') {
             url += `&minprice=0&maxprice=0.5`;
           } else {
-            url += `&minprice=0.5&maxprice=1`;
+            url += `&minprice=0.51&maxprice=1`;
           };
           if (this.accessibility === 'easy') {
             url += `&minaccessibility=0&maxaccessibility=0.5`;
           } else {
-            url += `&minaccessibility=0.5&maxaccessibility=1`;
+            url += `&minaccessibility=0.51&maxaccessibility=1`;
           };
           fetch(url)
           .then(response => response.json())
-          .then(data => this.randomActivity = data);
+          .then(data => {this.randomActivity = data;
+            eventBus.$emit("randomActivity", this.randomActivity);
+          });
       }
     }
   }
+
 </script>
 
 <style lang="css" scoped>

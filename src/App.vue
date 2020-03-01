@@ -8,6 +8,7 @@
 <script>
 import JokeComponent from './components/JokeComponent.vue'
 import ActivityForm from './components/ActivityForm.vue'
+import {eventBus} from "./main.js"
 
 export default {
   name: 'App',
@@ -17,7 +18,8 @@ export default {
   },
   data(){
     return {
-      joke: {}
+      joke: {},
+      randomActivity: {}
     }
   },
   mounted(){
@@ -26,6 +28,27 @@ export default {
     .then(jokeData => {
       this.joke = jokeData[0];
     })
+
+    eventBus.$on("randomActivity", (activity) => {
+      this.randomActivity = activity;
+      this.transformActivity(this.randomActivity);
+    })
+  },
+  methods: {
+    transformActivity(activity){
+      if(!activity.error){
+        if (activity.price <= 0.5) {
+          activity.price = 'cheap'
+        } else {
+          activity.price = 'expensive'
+        };
+        if (activity.accessibility <= 0.5) {
+          activity.accessibility = 'easy'
+        } else {
+          activity.accessibility = 'hard'
+        };
+      }
+    }
   }
 }
 </script>
