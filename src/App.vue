@@ -1,8 +1,18 @@
 <template>
   <div id="app">
-    <activity-form></activity-form>
-    <activity-component :activity='randomActivity'></activity-component>
-    <joke-component :joke='joke'></joke-component>
+    <div>
+      <b-jumbotron header="A Boring Joke App" lead="If you are bored here are some random activities...">
+      <p>...and some jokes</p>
+      </b-jumbotron>
+    </div>
+
+    <b-container>
+      <b-row>
+        <b-col><activity-form></activity-form></b-col>
+        <b-col><activity-component :activity='randomActivity'></activity-component></b-col>
+        <b-col><joke-component :joke='joke'></joke-component></b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -48,7 +58,7 @@ export default {
         if (activity.accessibility <= 0.5) {
           activity.accessibility = 'EASY'
         } else {
-          activity.accessibility = 'HARDER'
+          activity.accessibility = 'HARD'
         };
         activity.type = activity.type.toUpperCase()
       }

@@ -1,11 +1,13 @@
 <template lang="html">
   <div class="">
     <div v-if="activity.activity">
-      <h2>{{activity.activity}}</h2>
-      <p>{{activity.type}}</p>
-      <p>{{activity.participants}}</p>
-      <p>{{activity.price}}</p>
-      <p>{{activity.accessibility}}</p>
+      <b-card>
+        <h2>{{activity.activity}}</h2>
+        <p>Type: {{activity.type}}</p>
+        <p>Participants: {{activity.participants}}</p>
+        <p>Price: {{activity.price}}</p>
+        <p>Accessibility: {{activity.accessibility}}</p>
+      </b-card>
     </div>
 
     <div v-if="activity.error">

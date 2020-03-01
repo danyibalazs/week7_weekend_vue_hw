@@ -1,5 +1,6 @@
 <template lang="html">
   <div>
+    <h4 class="mb-3">Joke of the day</h4>
     <p>{{joke.setup}}</p>
     <p>{{joke.punchline}}</p>
   </div>

@@ -1,35 +1,37 @@
 <template lang="html">
   <div>
-    <input @click="getRandomActivity" type="button" value="Random Activity">
-    <form @submit.prevent="getFilteredActivity">
-      <label for="types">Choose a type:</label>
-      <select required v-model="selectedType" id="types">
+    <h4 class="mb-3">Get a random activity:</h4>
+    <b-button class="mb-3" @click="getRandomActivity">Random Activity</b-button>
+
+    <h4 class="mb-3">Or get a specified one:</h4>
+    <b-form @submit.prevent="getFilteredActivity">
+
+      <div class="mt-3">Type</div>
+      <b-form-select size="sm" class="mb-3" required v-model="selectedType" id="types">
             <option v-for="type in activityTypes" :value="type">{{type.toUpperCase()}}</option>
-      </select>
+      </b-form-select>
 
-      <label for="participants">Participants</label>
-      <input required type="number" v-model.number="participants">
-      <br>
+      <b-form-group label="Participans">
+        <b-form-input  required placeholder="Number of participants" type="number" v-model.number="participants"></b-form-input>
+      </b-form-group>
 
-      <label>Price</label>
-      <br>
-      <input required type="radio" name="price" value="cheap" v-model="price">
-      <label>Cheap</label>
-      <input type="radio" name="price" value="expensive" v-model="price">
-      <label>Expensive</label>
-      <br>
+      <b-form-group label="Price">
+        <b-form-radio-group>
+        <b-form-radio required name="price" value="cheap" v-model="price">Cheap</b-form-radio>
+        <b-form-radio name="price" value="expensive" v-model="price">Expensive</b-form-radio>
+        </b-form-radio-group>
+      </b-form-group>
 
-      <label>Accessibility</label>
-      <br>
-      <input required type="radio" name="accessibility" value="easy" v-model="accessibility">
-      <label>Easy</label>
-      <input type="radio" name="accessibility" value="hard" v-model="accessibility">
-      <label>Hard</label>
-      <br>
+      <b-form-group label="Accessibility">
+        <b-form-radio-group>
+        <b-form-radio required name="accessibility" value="easy" v-model="accessibility">Easy</b-form-radio>
+        <b-form-radio nname="accessibility" value="hard" v-model="accessibility">Hard</b-form-radio>
+        </b-form-radio-group>
+      </b-form-group>
 
-      <input type="submit" value="Get Activity">
+      <b-button type="submit">Get activity</b-button>
 
-    </form>
+    </b-form>
   </div>
 </template>
 
