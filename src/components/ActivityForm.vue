@@ -59,6 +59,10 @@ export default {
           .then(data => {this.randomActivity = data;
             eventBus.$emit("randomActivity", this.randomActivity);
           });
+          this.selectedType = "",
+          this.participants = null,
+          this.price = "",
+          this.accessibility = ""
       },
       getFilteredActivity(){
         let url = 'http://www.boredapi.com/api/activity'
