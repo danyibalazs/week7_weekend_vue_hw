@@ -1,20 +1,23 @@
 <template>
   <div id="app">
     <activity-form></activity-form>
-    <!-- <joke-component :joke='joke'></joke-component> -->
+    <activity-component :activity='randomActivity'></activity-component>
+    <joke-component :joke='joke'></joke-component>
   </div>
 </template>
 
 <script>
 import JokeComponent from './components/JokeComponent.vue'
 import ActivityForm from './components/ActivityForm.vue'
+import ActivityComponent from './components/ActivityComponent.vue'
 import {eventBus} from "./main.js"
 
 export default {
   name: 'App',
   components: {
     'joke-component': JokeComponent,
-    'activity-form': ActivityForm
+    'activity-form': ActivityForm,
+    'activity-component': ActivityComponent
   },
   data(){
     return {
@@ -38,15 +41,16 @@ export default {
     transformActivity(activity){
       if(!activity.error){
         if (activity.price <= 0.5) {
-          activity.price = 'cheap'
+          activity.price = 'cheap'.toUpperCase()
         } else {
-          activity.price = 'expensive'
+          activity.price = 'expensive'.toUpperCase()
         };
         if (activity.accessibility <= 0.5) {
-          activity.accessibility = 'easy'
+          activity.accessibility = 'easy'.toUpperCase()
         } else {
-          activity.accessibility = 'hard'
+          activity.accessibility = 'hard'.toUpperCase()
         };
+        activity.type = activity.type.toUpperCase()
       }
     }
   }

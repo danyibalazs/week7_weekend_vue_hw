@@ -3,7 +3,7 @@
     <form @submit.prevent="getFilteredActivity">
       <label for="types">Choose a type:</label>
       <select v-model="selectedType" id="types">
-            <option v-for="type in activityTypes" :value="type">{{type}}</option>
+            <option v-for="type in activityTypes" :value="type">{{type.toUpperCase()}}</option>
       </select>
 
       <label for="participants">Participants</label>
@@ -27,7 +27,7 @@
       <br>
 
       <input type="submit" value="Get Activity">
-
+      
     </form>
   </div>
 </template>
@@ -62,7 +62,7 @@ export default {
           } else {
             url += `&minaccessibility=0.51&maxaccessibility=1`;
           };
-          fetch(url)
+        fetch(url)
           .then(response => response.json())
           .then(data => {this.randomActivity = data;
             eventBus.$emit("randomActivity", this.randomActivity);
